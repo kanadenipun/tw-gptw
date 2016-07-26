@@ -1,0 +1,42 @@
+<template name="database1">
+<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Index</th>
+				<th>Category</th>
+				<th>Sub Category</th>
+				<th>Question</th>
+				<th>Result (a/b) vs (c/d)</th>
+				<th>2014 Score (a)</th>
+				<th>2014 Top50 (b)</th>
+				<th>2015 Score (Chennai) (c)</th>
+				<th>2015 Top50 (d)</th>
+				<th>2014 (a/b)</th>
+				<th>2015 (c/d)</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+		{{#each getScores}}
+			<tr class="{{getCategory Score2015}}">
+				<td>{{QNO}}</td>
+				<td>{{Category}}</td>
+				<td>{{Subcategory}}</td>
+				<td>{{Question}}</td>
+				{{#if compare Score2014 Top502014 Score2015 Top502015}}
+					<td><i class="fa fa-2x fa-arrow-circle-up text-success"></i></td>
+				{{else}}
+					<td><i class="fa fa-2x fa-arrow-circle-down text-danger"></i></td>
+				{{/if}}
+				<td>{{Score2014}}</td>
+				<td>{{Top502014}}</td>
+				<td>{{Score2015}}</td>
+				<td>{{Top502015}}</td>
+				<td>{{getImprovement Score2014 Top502014 }}</td> 
+				<td>{{getImprovement Score2015 Top502015}}</td> 
+					
+			</tr>
+		{{/each}}
+		</tbody>
+	</table>
+</template>
